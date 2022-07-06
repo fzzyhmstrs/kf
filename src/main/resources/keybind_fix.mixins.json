@@ -1,0 +1,13 @@
+{
+  "required": true,
+  "package": "me.fzzyhmstrs.keybind_fix.mixins",
+  "compatibilityLevel": "JAVA_16",
+  "client": [
+    "BoundKeyAccessor",
+    "KeybindingMixin",
+    "TimesPressedAccessor"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}
