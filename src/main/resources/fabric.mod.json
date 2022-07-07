@@ -16,10 +16,10 @@
   "icon": "assets/keybind_fix/icon.png",
   "environment": "*",
   "entrypoints": {
-    "main": [
+    "client": [
       {
         "adapter": "kotlin",
-        "value": "me.fzzyhmstrs.keybind_fix.KF"
+        "value": "me.fzzyhmstrs.keybind_fix.KFC"
       }
     ]
   },

@@ -1,11 +1,11 @@
 package me.fzzyhmstrs.keybind_fix
 
-import net.fabricmc.api.ModInitializer
+import net.fabricmc.api.ClientModInitializer
 
 
-object KF: ModInitializer {
+object KFC: ClientModInitializer {
     const val MOD_ID = "keybind_fix"
 
-    override fun onInitialize() {
+    override fun onInitializeClient() {
     }
 }
