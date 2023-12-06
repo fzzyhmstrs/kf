@@ -26,6 +26,10 @@ dependencies {
     val fabricKotlinVersion: String by project
     modImplementation("net.fabricmc:fabric-language-kotlin:$fabricKotlinVersion")
 
+    val meVersion: String by project
+    implementation("com.github.llamalad7.mixinextras:mixinextras-fabric:$meVersion")
+    annotationProcessor("com.github.llamalad7.mixinextras:mixinextras-fabric:$meVersion")
+
 }
 tasks {
     val javaVersion = JavaVersion.VERSION_17
