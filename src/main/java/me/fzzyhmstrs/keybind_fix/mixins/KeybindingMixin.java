@@ -17,16 +17,17 @@ public abstract class KeybindingMixin {
 
     @Final
     @Shadow private static Map<String, KeyBinding> KEYS_BY_ID;
+    @Shadow private static Map<InputUtil.Key, KeyBinding> KEY_TO_BINDINGS;
     @Shadow private InputUtil.Key boundKey;
 
-    @Inject(method = "onKeyPressed", at = @At(value = "HEAD"))
-    private static void onKeyPressedFixed(InputUtil.Key key, CallbackInfo ci){
-        KeybindFixer.INSTANCE.onKeyPressed(key);
+    @Inject(method = "onKeyPressed", at = @At(value = "TAIL"))
+    private static void onKeyPressedFixed(InputUtil.Key key, CallbackInfo ci, @Local Keybinding original){
+        KeybindFixer.INSTANCE.onKeyPressed(key, original, KEY_TO_BINDINGS.get(key));
     }
 
-    @Inject(method = "setKeyPressed", at = @At(value = "HEAD"))
-    private static void setKeyPressedFixed(InputUtil.Key key, boolean pressed, CallbackInfo ci){
-        KeybindFixer.INSTANCE.setKeyPressed(key, pressed);
+    @Inject(method = "setKeyPressed", at = @At(value = "TAIL"))
+    private static void setKeyPressedFixed(InputUtil.Key key, boolean pressed, CallbackInfo ci, @Local Keybinding original){
+        KeybindFixer.INSTANCE.setKeyPressed(key, pressed, original, KEY_TO_BINDINGS.get(key));
     }
 
     @Inject(method = "updateKeysByCode", at = @At(value = "TAIL"))
