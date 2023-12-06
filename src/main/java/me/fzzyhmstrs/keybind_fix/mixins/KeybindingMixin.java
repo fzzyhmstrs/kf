@@ -30,12 +30,18 @@ public abstract class KeybindingMixin {
         KeybindFixer.INSTANCE.setKeyPressed(key, pressed, original, KEY_TO_BINDINGS.get(key));
     }
 
-    @Inject(method = "updateKeysByCode", at = @At(value = "TAIL"))
+    /*@Inject(method = "updateKeysByCode", at = @At(value = "TAIL"))
     private static void updateByCodeToMultiMap(CallbackInfo ci) {
         KeybindFixer.INSTANCE.clearMap();
         for (KeyBinding keyBinding : KEYS_BY_ID.values()) {
             KeybindFixer.INSTANCE.putKey(((BoundKeyAccessor) keyBinding).getBoundKey(),keyBinding);
         }
+    }*/
+
+    @WrapOperation(method = "updateKeysByCode", at = @At(value = "INVOKE",target = "Ljava/util/Map;put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;")
+    private static boolean keybind_fix_updateByCodeToMultiMap(Map<InputUtil.Key, KeyBinding> map, Object key, Object keyBinding, Operation<Boolean> operation){
+        operation.call(map,key,keyBinding)
+        KeybindFixer.INSTANCE.putKey((InputUtil.Key)key,(KeyBinding)keyBinding);
     }
 
     @Inject(method = "<init>(Ljava/lang/String;Lnet/minecraft/client/util/InputUtil$Type;ILjava/lang/String;)V", at = @At(value = "TAIL"))
