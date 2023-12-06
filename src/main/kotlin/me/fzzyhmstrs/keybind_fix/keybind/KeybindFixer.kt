@@ -18,18 +18,18 @@ object KeybindFixer {
         keyFixMap.clear()
     }
 
-    fun onKeyPressed(key: InputUtil.Key, originalBinding: KeyBinding, baseBinding: KeyBinding){
-        if (originalBinding !== baseBinding) return
+    fun onKeyPressed(key: InputUtil.Key, finalBinding: KeyBinding, baseBinding: KeyBinding){
+        if (finalBinding !== baseBinding) return
         for (key in keyFixMap[key]){
-            if (key == null || key === originalBinding) continue
+            if (key == null || key === baseBinding) continue
             (it as TimesPressedAccessor).timesPressed++
         }
     }
 
-    fun setKeyPressed(key: InputUtil.Key, pressed: Boolean, originalBinding: KeyBinding, baseBinding: KeyBinding){
-        if (originalBinding !== baseBinding) return
+    fun setKeyPressed(key: InputUtil.Key, pressed: Boolean, finalBinding: KeyBinding, baseBinding: KeyBinding){
+        if (finalBinding !== baseBinding) return
         for (key in keyFixMap[key]){
-            if (key == null || key === originalBinding) continue
+            if (key == null || key === baseBinding) continue
             it.isPressed = pressed
         }
     }
