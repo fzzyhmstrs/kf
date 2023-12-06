@@ -12,7 +12,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 import java.util.Map;
 
-@Mixin(KeyBinding.class)
+@Mixin(value = KeyBinding.class, priority = 10000)
 public abstract class KeybindingMixin {
 
     @Final
