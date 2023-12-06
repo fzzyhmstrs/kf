@@ -19,16 +19,14 @@ public abstract class KeybindingMixin {
     @Shadow private static Map<String, KeyBinding> KEYS_BY_ID;
     @Shadow private InputUtil.Key boundKey;
 
-    @Inject(method = "onKeyPressed", at = @At(value = "HEAD"), cancellable = true)
+    @Inject(method = "onKeyPressed", at = @At(value = "HEAD"))
     private static void onKeyPressedFixed(InputUtil.Key key, CallbackInfo ci){
         KeybindFixer.INSTANCE.onKeyPressed(key);
-        ci.cancel();
     }
 
-    @Inject(method = "setKeyPressed", at = @At(value = "HEAD"), cancellable = true)
+    @Inject(method = "setKeyPressed", at = @At(value = "HEAD"))
     private static void setKeyPressedFixed(InputUtil.Key key, boolean pressed, CallbackInfo ci){
         KeybindFixer.INSTANCE.setKeyPressed(key, pressed);
-        ci.cancel();
     }
 
     @Inject(method = "updateKeysByCode", at = @At(value = "TAIL"))

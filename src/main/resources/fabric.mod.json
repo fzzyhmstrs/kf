@@ -3,14 +3,14 @@
   "id": "keybind_fix",
   "version": "${version}",
   "name": "Keybind Fix",
-  "description": "Fixes keybindings overwriting each other when set as a conflict, allowing both keybindings to function (in game effects may still conflict)",
+  "description": "Fixes keybindings overwriting each other when set as a conflict, allowing both bindings to function (in game effects may still conflict)",
   "authors": [
     "fzzyhmstrs"
   ],
   "contact": {
-    "homepage": "https://example.com/",
-    "issues": "https://example.com/",
-    "sources": "https://example.com/"
+    "homepage": "https://www.curseforge.com/minecraft/mc-mods/keybind-fix",
+    "issues": "https://github.com/fzzyhmstrs/kf/issues",
+    "sources": "https://github.com/fzzyhmstrs/kf"
   },
   "license": "MIT License",
   "icon": "assets/keybind_fix/icon.png",
